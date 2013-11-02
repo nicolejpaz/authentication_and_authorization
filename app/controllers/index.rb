@@ -19,7 +19,7 @@ post '/sessions' do
 end
 
 delete '/sessions/:id' do
-  # sign-out -- invoked via AJAX
+  session[:id] = nil
 end
 
 #----------- USERS -----------
