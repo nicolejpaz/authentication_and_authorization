@@ -22,10 +22,12 @@ end
 #----------- USERS -----------
 
 get '/users/new' do
-  # render sign-up page
+  
   erb :sign_up
 end
 
 post '/users' do
-  # sign-up a new user
+  User.create(name: params[:user][:name], email: params[:user][:email], password: params[:user][:password])
+  session[:id] = User.where(name: params[:user][:name])[0][:id]
+  redirect '/'
 end
